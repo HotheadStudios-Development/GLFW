@@ -1,4 +1,5 @@
 project "GLFW"
+    location "project"
     kind "StaticLib"
     language "C"
     
