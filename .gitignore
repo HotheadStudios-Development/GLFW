@@ -43,6 +43,9 @@ CMakeDoxygenDefaults.cmake
 cmake_install.cmake
 cmake_uninstall.cmake
 
+# Generated Folders
+project
+
 # Generated files
 docs/Doxyfile
 docs/html
