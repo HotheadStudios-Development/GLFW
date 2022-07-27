@@ -4,20 +4,27 @@ project "GLFW"
     language "C"
     
 	targetdir ("%{wks.location}/bin/" .. outputDir .. "/%{prj.name}")
-    objdir ("%{wks.location}/bin-obj/" .. outputDir .. "/%{prj.name}")
+	objdir ("%{wks.location}/bin-obj/" .. outputDir .. "/%{prj.name}")
 
 	files
 	{
         "include/GLFW/glfw3.h",
-        "include/GLFW/glfw3native.h",
-        "src/glfw_config.h",
-        "src/context.c",
-        "src/init.c",
-        "src/input.c",
-        "src/monitor.c",
-        "src/vulkan.c",
-        "src/window.c"
-    }
+	"include/GLFW/glfw3native.h",
+	"src/glfw_config.h",
+	"src/context.c",
+	"src/init.c",
+	"src/input.c",
+	"src/monitor.c",
+
+	"src/null_init.c",
+	"src/null_joystick.c",
+	"src/null_monitor.c",
+	"src/null_window.c",
+
+	"src/platform.c",
+	"src/vulkan.c",
+	"src/window.c",
+   	}
     
 	filter "system:windows"
         buildoptions { "-std=c11", "-lgdi32" }
@@ -37,10 +44,11 @@ project "GLFW"
             "src/osmesa_context.c"
         }
 
-		defines 
-		{ 
+	defines 
+	{ 
             "_GLFW_WIN32",
             "_CRT_SECURE_NO_WARNINGS"
-		}
+	}
+
     filter { "system:windows", "configurations:Release" }
         buildoptions "/MT"
